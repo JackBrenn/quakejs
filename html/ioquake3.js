@@ -21798,6 +21798,7 @@ function copyTempDouble(ptr) {
   		var eula = document.createElement('div');
   		eula.id = 'eula-frame';
       eula.innerHTML = '<div id="eula-frame-inner">' +
+        '<h2>QuakeJS - Browser-Based Quake III Arena</h2>' +
         '<p><strong>Credits & Attribution:</strong></p>' +
         '<ul>' +
         '<li>Container built using <a href="https://github.com/JackBrenn/quakejs-rootless" target="_blank">quakejs-rootless</a> by <a href="https://github.com/JackBrenn" target="_blank">@JackBrenn</a></li>' +
