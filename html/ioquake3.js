@@ -21806,7 +21806,7 @@ function copyTempDouble(ptr) {
         '<li>QuakeJS fork with local server by <a href="https://github.com/nerosketch/quakejs" target="_blank">@nerosketch</a> (archived)</li>' +
         '<li>Original <a href="https://github.com/inolen/quakejs" target="_blank">QuakeJS</a> by <a href="https://github.com/inolen" target="_blank">@inolen</a></li>' +
         '</ul>' +
-        '<p class="text-warning"><strong>Security Warning:</strong> This project contains known security vulnerabilities from legacy Quake III Arena game code and deprecated NPM packages. Use at your own risk and avoid running in production or security-sensitive environments. For internet-facing deployments, use a VPN, reverse proxy with authentication, or limit access to trusted IP ranges.</p>' +
+        '<p class="text-warning"><strong>Security Warning:</strong> This project contains known security vulnerabilities from legacy Quake III Arena game code and deprecated NPM packages.</p>' +
         '<hr>' +
         '<p>In order to continue, the official Quake3 demo will need to be installed into the browser\'s persistent storage.</p>' +
         '<p>Please read through the demo\'s EULA and click "I Agree" if you agree to it and would like to continue.</p>' +
