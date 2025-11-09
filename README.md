@@ -15,14 +15,7 @@ QuakeJS Rootless is a security-focused fork of [nerosketch/quakejs](https://gith
 
 ### 🔒 Security Improvements
 
-This fork dramatically improves the security posture of QuakeJS by updating vulnerable NPM dependencies:
-
-| Severity | Before | After | Improvement |
-|----------|--------|-------|-------------|
-| CRITICAL | 5 | 0 | ✅ 100% |
-| HIGH | 12 | 0 | ✅ 100% |
-| MEDIUM | 13 | 1 | ✅ 92% |
-| LOW | 52 | 45 | ✅ 13% |
+This fork dramatically improves the security posture of QuakeJS by updating vulnerable NPM packages.
 
 **Key changes:**
 - 🔒 Updated all NPM dependencies to remove critical and high-severity vulnerabilities (except "wrench")
