@@ -10,7 +10,7 @@
 This project provides the core functionality for the quakejs-rootless project, see links above.
 
 **Key improvements in this fork:**
-- 🔒 Updated NPM dependencies to remove CRITICAl and HIGH vulnerabilities
+- 🔒 Updated NPM dependencies to remove CRITICAL and HIGH vulnerabilities
 - ✨ Code edits where required to support new NPM dependencies
 
 **TODO**
