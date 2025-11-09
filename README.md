@@ -34,7 +34,7 @@ This fork dramatically improves the security posture of QuakeJS by updating vuln
 While NPM dependencies and code have been updated to modern standards, not all dependencies could be upgraded to the latest versions without a major overhaul of the backend code. **QuakeJS should be considered insecure due to its aging codebase.**
 
 **Recommendations:**
-- 🔒 Run in an isolated environment (Rootles Podman container recommended - See link at the top of this README)
+- 🔒 Run in an isolated environment (rootles podman)
 - 🌐 Do not expose directly to the internet without additional security measures
 - 🛡️ Use behind a reverse proxy with rate limiting
 - 📊 Monitor for unusual activity if running publicly
