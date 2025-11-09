@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var async = require('async');
 var crc32 = require('buffer-crc32');
+var compression = require('compression');
 var express = require('express');
 var fs = require('fs');
 var http = require('http');
@@ -119,7 +120,7 @@ function handleAsset(req, res, next) {
 
 	logger.info('serving ' + relativePath + ' (crc32 ' + checksum + ') to ' + req.ip);
 
-	res.sendfile(absolutePath, { maxAge: Infinity });
+	res.sendFile(absolutePath, { maxAge: Infinity });
 }
 
 function loadConfig(configPath) {
@@ -145,7 +146,7 @@ function loadConfig(configPath) {
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		next();
 	});
-	app.use(express.compress({ filter: function(req, res) { return true; } }));
+	app.use(compression({ filter: function(req, res) { return true; } }));
 	app.get('/assets/manifest.json', handleManifest);
 	app.get(/^\/assets\/(.+\/|)(\d+)-(.+?)$/, handleAsset);
 
