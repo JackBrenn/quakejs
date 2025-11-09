@@ -29,6 +29,18 @@ This fork dramatically improves the security posture of QuakeJS by updating vuln
 - ✨ Refactored code to support modern dependency versions
 - 🐳 Rootless Docker support for improved container security
 
+### ⚠️ Security Considerations
+
+While NPM dependencies and code have been updated to modern standards, not all dependencies could be upgraded to the latest versions without a major overhaul of the backend code. **QuakeJS should be considered insecure due to its aging codebase.**
+
+**Recommendations:**
+- 🔒 Run in an isolated environment (Rootles Podman container recommended - See link at the top of this README)
+- 🌐 Do not expose directly to the internet without additional security measures
+- 🛡️ Use behind a reverse proxy with rate limiting
+- 📊 Monitor for unusual activity if running publicly
+
+This fork significantly reduces known vulnerabilities but cannot guarantee complete security given the age of the underlying codebase.
+
 ### 🚧 Roadmap
 
 - [ ] Migrate to a recent websocket (ws) npm dependency
