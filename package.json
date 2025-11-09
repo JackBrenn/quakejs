@@ -22,7 +22,7 @@
     "express": "^5.1.0",
     "yargs": "^18.0.0",
     "quakejs-files": "0.0.3",
-    "send": "^0.16.2",
+    "send": "^1.2.0",
     "temp": "~0.5.1",
     "underscore": "~1.13.7",
     "winston": "2.4.0",
