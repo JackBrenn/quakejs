@@ -1,6 +1,6 @@
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-JackBrenn%2Fquakejs--rootless-grey?style=for-the-badge&logo=github)](https://github.com/JackBrenn/quakejs-rootless)
+![GitHub](https://img.shields.io/badge/GitHub-JackBrenn%2Fquakejs--rootless-grey?style=for-the-badge&logo=github)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-awakenedpower%2Fquakejs--rootless-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/awakenedpower/quakejs-rootless)
 
 </div>
