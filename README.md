@@ -46,7 +46,6 @@ This fork significantly reduces known vulnerabilities but cannot guarantee compl
 - [ ] Migrate to a recent websocket (ws) npm dependency
 - [ ] Migrate to fs-extra from wrench (wrench is deprecated)
 - [ ] Modernize JavaScript code to ES6+ standards (When I'm a pensjoner!)
-- [ ] Improve documentation and examples
 
 ## 🚀 Quick Start
 
