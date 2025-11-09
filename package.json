@@ -18,7 +18,7 @@
     "buffer-crc32": "~1.0.0",
     "compression": "^1.8.1",
     "ejs": "~3.1.10",
-    "execSync": "~1.0.1-pre",
+    "execSync": "~1.0.2",
     "express": "^5.1.0",
     "yargs": "^18.0.0",
     "quakejs-files": "0.0.3",
