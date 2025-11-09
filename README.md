@@ -12,6 +12,9 @@ This project provides the core functionality for the quakejs-rootless container,
 - 🔒 Updated NPM dependencies, **0 CRITICAL and 0 HIGH rated vulnerabilities** (Docker Scout - 09.11.2025)
 - ✨ Code edits where required to support new NPM dependencies
 
+**TODO**
+- 🌐 Migrate to a more recent websocket (ws) npm dependency
+
 **----------------------------------------------**
 **---- HISTORICAL README FROM ORIGINAL FORK ----**
 **----------------------------------------------**
