@@ -14,7 +14,8 @@ This project provides the core functionality for the quakejs-rootless project, s
 - ✨ Code edits where required to support new NPM dependencies
 
 **TODO**
-- 🌐 Migrate to a more recent websocket (ws) npm dependency
+- 🌐 Migrate to a recent websocket (ws) npm dependency
+- 🌐 Update JavaScript code to modern standards
 
 
 **HISTORICAL README FROM ORIGINAL FORK**
