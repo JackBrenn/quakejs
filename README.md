@@ -1,5 +1,5 @@
 <div align="center">
-** Quake 3 Arena in Your Browser **
+**Quake 3 Arena in Your Browser**
   
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-awakenedpower%2Fquakejs--rootless-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/awakenedpower/quakejs-rootless)
 
