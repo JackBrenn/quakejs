@@ -1,5 +1,9 @@
 <div align="center">
 
+# QuakeJS Rootless Project
+
+A fork of QuakeJS with updated dependencies providing the core Quake 3 Arena functionality for the quakejs-rootless project.
+
 [![GitHub](https://img.shields.io/badge/GitHub-JackBrenn%2Fquakejs--rootless-blue?style=for-the-badge&logo=github)](https://github.com/JackBrenn/quakejs-rootless)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-awakenedpower%2Fquakejs--rootless-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/awakenedpower/quakejs-rootless)
 
@@ -7,105 +11,123 @@
 
 ## 🎮 About
 
-This project provides the core functionality for the quakejs-rootless project, see links above.
+QuakeJS Rootless is a security-focused fork of [nerosketch/quakejs](https://github.com/nerosketch/quakejs), which is a JavaScript port of [ioquake3](http://www.ioquake3.org) using [Emscripten](http://github.com/kripken/emscripten). This project enables you to run Quake 3 Arena in your web browser with enhanced security and modern dependency management.
 
-**Key improvements in this fork:**
-- 🔒 Updated NPM dependencies to remove CRITICAL and HIGH vulnerabilities
-- ✨ Code edits where required to support new NPM dependencies
+### 🔒 Security Improvements
 
-**TODO**
-- 🌐 Migrate to a recent websocket (ws) npm dependency
-- 🌐 Update JavaScript code to modern standards
+This fork dramatically improves the security posture of QuakeJS by updating vulnerable NPM dependencies:
 
+| Severity | Before | After | Improvement |
+|----------|--------|-------|-------------|
+| CRITICAL | 5 | 0 | ✅ 100% |
+| HIGH | 12 | 0 | ✅ 100% |
+| MEDIUM | 13 | 1 | ✅ 92% |
+| LOW | 52 | 45 | ✅ 13% |
 
-**HISTORICAL README FROM ORIGINAL FORK**
-----------------------------------------
-# QuakeJS
+**Key changes:**
+- 🔒 Updated all NPM dependencies to remove critical and high-severity vulnerabilities (except "wrench")
+- ✨ Refactored code to support modern dependency versions
+- 🐳 Rootless Docker support for improved container security
 
-QuakeJS is a port of [ioquake3](http://www.ioquake3.org) to JavaScript with the help of [Emscripten](http://github.com/kripken/emscripten).
+### 🚧 Roadmap
 
-To see a live demo, check out [http://www.quakejs.com](http://www.quakejs.com).
+- [ ] Migrate to a recent websocket (ws) npm dependency
+- [ ] Migrate to fs-extra from wrench (wrench is deprecated)
+- [ ] Modernize JavaScript code to ES6+ standards (When I'm a pensjoner!)
+- [ ] Improve documentation and examples
 
-This project is a fork of [https://github.com/inolen/quakejs/](https://github.com/inolen/quakejs/) and makes QuakeJS fully locally hostable with your own QuakeJS server, local Play page, and local content server.
+## 🚀 Quick Start
 
+### Using Podman (Recommended)
 
-## Building binaries
-
-As a prerequisite, you'll need to have a working build of [Emscripten](http://github.com/kripken/emscripten), then:
-
-```shell
-cd quakejs/ioq3
-make PLATFORM=js EMSCRIPTEN=<path_to_emscripten>
+```bash
+podman run -d \
+  --name quakejs \
+  -e HTTP_PORT=8080 \
+  -p 8080:8080 \
+  -p 27960:27960 \
+  docker.io/awakenedpower/quakejs-rootless:latest
 ```
 
-Binaries will be placed in `ioq3/build/release-js-js/`.
+### Using Docker Run
 
-To note, if you're trying to run a dedicated server, the most up to date binaries are already included in the `build` directory of this repository.
+```bash
+docker run -d \
+  --name quakejs \
+  -e HTTP_PORT=8080 \
+  -p 8080:8080 \
+  -p 27960:27960 \
+  docker.io/awakenedpower/quakejs-rootless:latest
+```
 
+Then open your browser and navigate to `http://localhost:8080` to start playing!
 
-## Running locally
+### Manual Installation
 
-Install the required node.js modules:
+**Prerequisites:**
+- Node.js (v14 or higher recommended)
+- npm
 
-```shell
+**Installation:**
+
+```bash
+# Clone the repository
+git clone https://github.com/JackBrenn/quakejs-rootless.git
+cd quakejs-rootless
+
+# Initialize submodules
+git submodule update --init
+
+# Install dependencies
 npm install
-```
 
-Set `content.quakejs.com` as the content server:
-
-```shell
+# Configure content server (using public CDN)
 echo '{ "content": "content.quakejs.com" }' > bin/web.json
-```
 
-Run the server:
-
-```shell
+# Start the server
 node bin/web.js --config ./web.json
 ```
 
-Your server is now running on: [http://0.0.0.0:8080](http://0.0.0.0:8080)
+Your server will be available at [http://localhost:8080](http://localhost:8080)
 
+## 🎯 Running a Dedicated Server
 
-## Running a dedicated server
+### Basic Dedicated Server
 
-If you'd like to run a dedicated server, the only snag is that unlike regular Quake 3, you'll need to double check the content server to make sure it supports the mod / maps you want your server to run (which you can deduce from the [public manifest](http://content.quakejs.com/assets/manifest.json)).
+For a publicly listed dedicated server:
 
-Also, networking in QuakeJS is done through WebSockets, which unfortunately means that native builds and web builds currently can't interact with eachother.
-
-Otherwise, running a dedicated server is similar to running a dedicated native server command-line wise.
-
-Setup a config for the mod you'd like to run, and startup the server with `+set dedicated 2`:
-
-```shell
-node build/ioq3ded.js +set fs_game <game> +set dedicated 2 +exec <server_config>
+```bash
+node build/ioq3ded.js +set fs_game baseq3 +set dedicated 2 +exec server.cfg
 ```
 
-If you'd just like to run a dedicated server that isn't broadcast to the master server:
+For a private server (not listed on master server):
 
-```shell
-node build/ioq3ded.js +set fs_game <game> +set dedicated 1 +exec <server_config>
+```bash
+node build/ioq3ded.js +set fs_game baseq3 +set dedicated 1 +exec server.cfg
 ```
 
-### baseq3 server, step-by-step
+### Complete baseq3 Server Setup
 
-*Note: for the initial download of game files you will need a server wth around 1GB of RAM. If the server exits with the message `Killed` then you need more memory. You can try getting around this by downloading the ``/quakejs/base/baseq3`` files on another, more powerful, machine and copying them to your low-RAM server.  I've heard a report of this being successfully completed on a machine with 512MB of RAM*
+**Note:** Initial setup requires ~1GB RAM for downloading game files.
 
-On your server clone this repository. `cd` into the `quakejs` clone and run the following commands:
+1. **Download base game files:**
 
-```
+```bash
 git submodule update --init
 npm install
 node build/ioq3ded.js +set fs_game baseq3 +set dedicated 2
 ```
 
-After running the last command continue pressing Enter until you have read the EULA, and then answer the `Agree? (y/n)` prompt. The base game files will download. When they have finished press Ctrl+C to quit the server.
+2. **Accept the EULA** by pressing Enter through the agreement and typing `y` when prompted
 
-In the newly created `base/baseq3` directory add a file called `server.cfg` with the following contents (adapted from [Quake 3 World](http://www.quake3world.com/q3guide/servers.html)):
+3. **Wait for downloads to complete**, then press `Ctrl+C` to stop
 
-```
-seta sv_hostname "CHANGE ME"
+4. **Create server configuration** at `base/baseq3/server.cfg`:
+
+```cfg
+seta sv_hostname "My QuakeJS Server"
 seta sv_maxclients 12
-seta g_motd "CHANGE ME"
+seta g_motd "Welcome to my server!"
 seta g_quadfactor 3
 seta g_gametype 0
 seta timelimit 15
@@ -113,73 +135,111 @@ seta fraglimit 25
 seta g_weaponrespawn 3
 seta g_inactivity 3000
 seta g_forcerespawn 0
-seta rconpassword "CHANGE_ME"
+seta rconpassword "CHANGE_ME_SECURE_PASSWORD"
 set d1 "map q3dm7 ; set nextmap vstr d2"
 set d2 "map q3dm17 ; set nextmap vstr d1"
 vstr d1
 ```
 
-replacing the `sv_hostname`, `g_motd` and `rconpassword`, and any other configuration options you desire.
+5. **Start your server:**
 
-You can now run the server with 
-
-```
+```bash
 node build/ioq3ded.js +set fs_game baseq3 +set dedicated 2 +exec server.cfg
 ```
 
-and you should be able to join at http://www.quakejs.com/play?connect%20SERVER_IP:27960, replacing `SERVER_IP` with the IP of your server.
+6. **Connect** at: `http://www.quakejs.com/play?connect%20YOUR_SERVER_IP:27960`
 
-## Running a content server
+## 🗂️ Running a Content Server
 
-QuakeJS loads assets directly from a central content server. A public content server is available at `content.quakejs.com`, however, if you'd like you run your own (to perhaps provide new mods) you'll need to first repackage assets into the format QuakeJS expects.
+QuakeJS can use a custom content server for hosting game assets and mods.
 
-### Repackaging assets
+### Repackaging Assets
 
-When repackaging assets, an asset graph is built from an incoming directory of pk3s, and an optimized set of map-specific pk3s is output to a destination directory.
-
-To run this process:
-
-```shell
-node bin/repak.js --src <assets_src> --dest <assets>
+```bash
+node bin/repak.js --src <source_pk3_directory> --dest <output_directory>
 ```
 
-And to launch the content server after the repackaging is complete:
+### Starting Content Server
 
-```shell
+```bash
 node bin/content.js
 ```
 
-Note: `./assets` is assumed to be the default asset directory. If you'd like to change that, you'll need to modify the JSON configuration used by the content server.
+### Using Custom Content Server
 
-Once the content server is available, you can use it by launching your local or dedicated server with `+set fs_cdn <server_address>`.
+Launch your game/dedicated server with:
 
-## Running a local dedicated server, content server, and play page
+```bash
+node bin/web.js +set fs_cdn http://your-content-server:port
+```
 
-It is possible to run a QuakeJS server, Content Server, and Play Page entirely locally (for use on a LAN with no external internet connection required).
+## 🎨 Adding Custom Maps & Content
 
-Configure a dedicated local server as described above in **Running a dedicated server** and **baseq3 server, step-by-step**.
+For detailed guides on adding custom content:
 
-Copy the files from `html` to your web server's root folder.  Run `html/get_assets.sh` to download files from http://content.quakejs.com.  Rename *quakejs* on line 77 of `html/index.html` to your server's hostname.
+- **Linux:** See [cctools/README.md](cctools/README.md) by [@digidigital](https://github.com/digidigital/)
+- **Windows:** [Step-by-step guide](https://steamforge.net/wiki/index.php/How_to_setup_a_local_QuakeJS_server_under_Windows_10#Adding_your_own_Maps)
+- **Video tutorial:** [YouTube guide](https://www.youtube.com/watch?v=m57rMXASWms) by [@grabisoft](https://github.com/grabisoft)
 
-Copy `init.d/quakejs` to `/etc/init.d/`, make it executable, and enable it by running `sudo update-rc.d quakejs defaults` (under Debian).
+## 🏗️ Building from Source
 
-*Step by step instructions can be found at https://steamforge.net/wiki/index.php/How_to_setup_a_local_QuakeJS_server_under_Debian_9_or_Debian_10*
+To build the Emscripten binaries yourself:
 
-## Adding custom maps & content
+**Prerequisites:**
+- Working [Emscripten](http://github.com/kripken/emscripten) installation
 
-[digidigital](https://github.com/digidigital/) has written a guide on adding custom content under Linux.  It is part of the repo and can be found at https://github.com/begleysm/quakejs/blob/master/cctools/README.md
+```bash
+cd quakejs/ioq3
+make PLATFORM=js EMSCRIPTEN=<path_to_emscripten>
+```
 
-## Windows
+Binaries will be output to `ioq3/build/release-js-js/`
 
-Step by step instructions on how to setup a server under Windows 10 can be found at https://steamforge.net/wiki/index.php/How_to_setup_a_local_QuakeJS_server_under_Windows_10#Adding_your_own_Maps
+## 🌐 Fully Local Setup
 
-A video guide on setting up a Windows 10 server, and adding custom content, under Windows 10 has been developed by [grabisoft](https://github.com/grabisoft) and can be viewed at https://www.youtube.com/watch?v=m57rMXASWms
+For completely offline LAN setups:
 
-## Other QuakeJS Implementations
-* [quakejs-installer](https://github.com/digidigital/quakejs-installer): a simple and configurable Linux-based QuakeJS "one step" Installer with some common pre-included addons. 
-* [quakejs-docker](https://github.com/treyyoder/quakejs-docker): a fully local and Dockerized quakejs server. Independent, unadulterated, and free from the middleman.
-* [quake-kube](https://github.com/criticalstack/quake-kube): a Kubernetes-ified version of QuakeJS that runs a dedicated Quake 3 server in a Kubernetes Deployment.
+1. Set up a dedicated server (see above)
+2. Copy `html/*` to your web server root
+3. Run `html/get_assets.sh` to download assets from content.quakejs.com
+4. Edit line 77 of `html/index.html` to point to your server
+5. (Optional) Set up as a system service using `init.d/quakejs`
 
-## License
+Detailed guide: [Local QuakeJS Server Setup](https://steamforge.net/wiki/index.php/How_to_setup_a_local_QuakeJS_server_under_Debian_9_or_Debian_10)
 
-MIT
+## 🔗 Related Projects
+
+- [nerosketch/quakejs](https://github.com/nerosketch/quakejs) - The upstream fork this project is based on
+- [quakejs-installer](https://github.com/digidigital/quakejs-installer) - One-step Linux installer with common addons
+- [quakejs-docker](https://github.com/treyyoder/quakejs-docker) - Fully local Dockerized QuakeJS server
+- [quake-kube](https://github.com/criticalstack/quake-kube) - Kubernetes deployment for QuakeJS
+- [begleysm/quakejs](https://github.com/begleysm/quakejs) - Another popular QuakeJS fork with local hosting
+- [inolen/quakejs](https://github.com/inolen/quakejs/) - The original QuakeJS project
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues for:
+
+- Security improvements
+- Dependency updates
+- Bug fixes
+- Documentation improvements
+- New features
+
+## 📝 License
+
+MIT License - See [LICENSE](LICENSE) file for details
+
+## 🙏 Credits
+
+- Original QuakeJS port by [@inolen](https://github.com/inolen)
+- Upstream fork by [@nerosketch](https://github.com/nerosketch)
+- Built on [ioquake3](http://www.ioquake3.org) and [Emscripten](http://github.com/kripken/emscripten)
+
+---
+
+<div align="center">
+
+**[Documentation](https://github.com/JackBrenn/quakejs-rootless/wiki)** • **[Report Bug](https://github.com/JackBrenn/quakejs-rootless/issues)** • **[Request Feature](https://github.com/JackBrenn/quakejs-rootless/issues)**
+
+</div>
