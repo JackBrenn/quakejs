@@ -1,3 +1,21 @@
+<div align="center">
+** Quake 3 Arena in Your Browser **
+  
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-awakenedpower%2Fquakejs--rootless-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/awakenedpower/quakejs-rootless)
+
+</div>
+
+## 🎮 About
+
+This project provides the core functionality for the quakejs-rootless container, available on Docker Hub, see link above.
+
+**Key improvements in this fork:**
+- 🔒 Updated NPM dependencies, **0 CRITICAL and 0 HIGH rated vulnerabilities** (Docker Scout - 09.11.2025)
+- ✨ Code edits where required to support new NPM dependencies
+
+**----------------------------------------------**
+**---- HISTORICAL README FROM ORIGINAL FORK ----**
+**----------------------------------------------**
 # QuakeJS
 
 QuakeJS is a port of [ioquake3](http://www.ioquake3.org) to JavaScript with the help of [Emscripten](http://github.com/kripken/emscripten).
