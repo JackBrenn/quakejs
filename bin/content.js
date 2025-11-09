@@ -5,20 +5,15 @@ var express = require('express');
 var fs = require('fs');
 var http = require('http');
 var logger = require('winston');
-var opt = require('optimist');
 var path = require('path');
 var send = require('send');
 var wrench = require('wrench');
 var zlib = require('zlib');
 
-var argv = require('optimist')
+var argv = require('yargs')
 	.describe('config', 'Location of the configuration file').default('config', './config.json')
+	.help('help').alias('help', 'h')
 	.argv;
-
-if (argv.h || argv.help) {
-	opt.showHelp();
-	return;
-}
 
 logger.cli();
 logger.level = 'debug';

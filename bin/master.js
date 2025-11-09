@@ -1,19 +1,14 @@
 var _ = require('underscore');
 var http = require('http');
 var logger = require('winston');
-var opt = require('optimist');
 var url = require('url');
 var WebSocketClient = require('ws');
 var WebSocketServer = require('ws').Server;
 
-var argv = require('optimist')
+var argv = require('yargs')
 	.describe('config', 'Location of the configuration file').default('config', './config.json')
+	.help('help').alias('help', 'h')
 	.argv;
-
-if (argv.h || argv.help) {
-	opt.showHelp();
-	return;
-}
 
 logger.cli();
 logger.level = 'debug';

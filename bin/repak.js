@@ -38,7 +38,7 @@ var whitelist = [
 logger.cli();
 logger.level = 'debug';
 
-var argv = require('optimist')
+var argv = require('yargs')
 	.options({
 		'config': {
 			'description': 'Repak asset config script',
@@ -52,12 +52,8 @@ var argv = require('optimist')
 		}
 	})
 	.demand(['src', 'dest'])
+	.help('help').alias('help', 'h')
 	.argv;
-
-if (argv.h || argv.help) {
-	opt.showHelp();
-	return;
-}
 
 var src = argv.src;
 var dest = argv.dest;
