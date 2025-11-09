@@ -57,7 +57,9 @@ function generateManifest(callback) {
 		var gzip = zlib.createGzip();
 
 		stream.on('error', function (err) {
-			callback(err);
+			cb(err);  // ✅ Call the iterator callback
+			stream.destroy();  // Clean up
+			gzip.destroy();
 		});
 		stream.on('data', function (data) {
 			crc = crc32.unsigned(data, crc);
