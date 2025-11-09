@@ -16,9 +16,9 @@ This project provides the core functionality for the quakejs-rootless project, s
 **TODO**
 - 🌐 Migrate to a more recent websocket (ws) npm dependency
 
-**----------------------------------------------**
-**---- HISTORICAL README FROM ORIGINAL FORK ----**
-**----------------------------------------------**
+
+**HISTORICAL README FROM ORIGINAL FORK**
+----------------------------------------
 # QuakeJS
 
 QuakeJS is a port of [ioquake3](http://www.ioquake3.org) to JavaScript with the help of [Emscripten](http://github.com/kripken/emscripten).
