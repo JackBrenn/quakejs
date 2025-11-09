@@ -19,7 +19,7 @@
     "ejs": "~3.1.10",
     "execSync": "~1.0.1-pre",
     "express": "~3.3.5",
-    "optimist": "~0.6.0",
+    "yargs": "^18.0.0",
     "quakejs-files": "0.0.3",
     "send": "^0.16.2",
     "temp": "~0.5.1",
