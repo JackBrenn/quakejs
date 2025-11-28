@@ -20,7 +20,7 @@ This fork dramatically improves the security posture of QuakeJS by updating vuln
 **Key changes:**
 - Updated all NPM dependencies to remove critical and high-severity vulnerabilities (except "wrench")
 - Refactored code to support modern dependency versions
-- Rootless Docker support for improved container securit
+- Rootless Docker support for improved container security
 
 ## License
 
