@@ -21,7 +21,7 @@
     "execSync": "~1.0.2",
     "express": "^5.1.0",
     "yargs": "^18.0.0",
-    #"quakejs-files": "0.0.3",
+    //"quakejs-files": "0.0.3",
     "send": "^1.2.0",
     "temp": "~0.9.4",
     "underscore": "~1.13.7",
