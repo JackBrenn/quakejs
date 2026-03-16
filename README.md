@@ -1,8 +1,11 @@
 <div align="center">
 
+> ⚠️ **This repository has been archived.**
+> Development has moved to [JackBrenn/quakejs-rootless](https://github.com/JackBrenn/quakejs-rootless)
+
 # QuakeJS Rootless Project
 
-A fork of QuakeJS with updated dependencies providing the core Quake 3 Arena functionality for the quakejs-rootless project.
+A fork of QuakeJS with updated dependencies providing the core Quake 3 Arena functionality.
 
 [![GitHub](https://img.shields.io/badge/GitHub-JackBrenn%2Fquakejs--rootless-blue?style=for-the-badge&logo=github)](https://github.com/JackBrenn/quakejs-rootless)
 [![Docker Hub](https://img.shields.io/badge/Docker%20Hub-awakenedpower%2Fquakejs--rootless-blue?style=for-the-badge&logo=docker)](https://hub.docker.com/r/awakenedpower/quakejs-rootless)
